@@ -61,5 +61,10 @@ class BookAdapter(
         data.removeAt(position)
         notifyDataSetChanged()
     }
-}
 
+    fun filterList(newList: List<BookDto>) {
+        data.clear()
+        data.addAll(newList)
+        notifyDataSetChanged()
+    }
+}

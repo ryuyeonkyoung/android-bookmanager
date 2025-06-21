@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -65,7 +66,32 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
+        val searchItem = menu?.findItem(R.id.menu_search)
+        val searchView = searchItem?.actionView as? SearchView
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                filterBooks(query)
+                return true
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterBooks(newText)
+                return true
+            }
+        })
         return true
+    }
+
+    private fun filterBooks(query: String?) {
+        val allBooks = dao.getAll()
+        if (query.isNullOrBlank()) {
+            adapter.filterList(allBooks)
+        } else {
+            val filtered = allBooks.filter {
+                it.title.contains(query, ignoreCase = true) ||
+                it.author.contains(query, ignoreCase = true)
+            }
+            adapter.filterList(filtered)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

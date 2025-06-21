@@ -12,5 +12,10 @@
         android:id="@+id/menu_exit"
         android:title="앱 종료"
         android:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_search"
+        android:title="검색"
+        android:icon="@android:drawable/ic_menu_search"
+        android:showAsAction="always"
+        android:actionViewClass="androidx.appcompat.widget.SearchView"/>
 </menu>
-
