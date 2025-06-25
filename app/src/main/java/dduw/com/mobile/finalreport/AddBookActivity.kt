@@ -6,9 +6,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import dduw.com.mobile.finalreport.databinding.ActivityAddBookBinding
 
-//import dduw.com.mobile.finalreport.databinding.ActivityAddBookBinding
-
-
 class AddBookActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddBookBinding
     private lateinit var dao: BookDaoImpl

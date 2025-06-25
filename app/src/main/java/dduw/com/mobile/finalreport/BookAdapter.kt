@@ -25,7 +25,6 @@ class BookAdapter(
         fun bind(book: BookDto) {
             binding.textTitle.text = book.title
             binding.textAuthor.text = book.author
-            // 이미지뷰는 필요시 설정
             binding.root.setOnClickListener {
                 itemClickListener?.invoke(book)
             }

@@ -10,7 +10,6 @@ class DeveloperInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // 단순 뷰 바인딩으로 레이아웃 표시
     }
 }
 
