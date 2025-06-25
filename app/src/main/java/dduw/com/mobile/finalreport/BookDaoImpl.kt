@@ -15,6 +15,8 @@ class BookDaoImpl(context: Context) : BookDao {
             put("publisher", book.publisher)
             put("summary", book.summary)
             put("price", book.price)
+            put("imageUri", book.imageUri)
+            put("publishedDate", book.publishedDate)
         }
         val id = db.insert(BookDBHelper.TABLE_NAME, null, values)
         db.close()
@@ -29,6 +31,8 @@ class BookDaoImpl(context: Context) : BookDao {
             put("publisher", book.publisher)
             put("summary", book.summary)
             put("price", book.price)
+            put("imageUri", book.imageUri)
+            put("publishedDate", book.publishedDate)
         }
         val result = db.update(
             BookDBHelper.TABLE_NAME,
@@ -90,8 +94,9 @@ class BookDaoImpl(context: Context) : BookDao {
             author = cursor.getString(cursor.getColumnIndexOrThrow("author")),
             publisher = cursor.getString(cursor.getColumnIndexOrThrow("publisher")),
             summary = cursor.getString(cursor.getColumnIndexOrThrow("summary")),
-            price = if (!cursor.isNull(cursor.getColumnIndexOrThrow("price"))) cursor.getInt(cursor.getColumnIndexOrThrow("price")) else null
+            price = if (!cursor.isNull(cursor.getColumnIndexOrThrow("price"))) cursor.getInt(cursor.getColumnIndexOrThrow("price")) else null,
+            imageUri = cursor.getString(cursor.getColumnIndexOrThrow("imageUri")),
+            publishedDate = cursor.getString(cursor.getColumnIndexOrThrow("publishedDate"))
         )
     }
 }
-

@@ -6,5 +6,7 @@ data class BookDto(
     val author: String,
     val publisher: String?,
     val summary: String?,
-    val price: Int?
+    val price: Int?,
+    val imageUri: String? = null,
+    val publishedDate: String? = null
 ) : java.io.Serializable

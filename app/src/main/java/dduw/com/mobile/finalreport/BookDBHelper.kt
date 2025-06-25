@@ -13,10 +13,12 @@ class BookDBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, 
                 author TEXT NOT NULL,
                 publisher TEXT,
                 summary TEXT,
-                price INTEGER
+                price INTEGER,
+                imageUri TEXT,
+                publishedDate TEXT
             )
         """)
-        // 샘플 데이터 5권 삽입
+        // 샘플 데이터 5권 삽입 (imageUri, publishedDate는 null)
         db.execSQL("INSERT INTO $TABLE_NAME (title, author, publisher, summary, price) VALUES ('어린왕자', '생텍쥐페리', '문학동네', '어린 왕자의 모험', 12000)")
         db.execSQL("INSERT INTO $TABLE_NAME (title, author, publisher, summary, price) VALUES ('데미안', '헤르만 헤세', '민음사', '자아를 찾아가는 이야기', 13000)")
         db.execSQL("INSERT INTO $TABLE_NAME (title, author, publisher, summary, price) VALUES ('1984', '조지 오웰', '민음사', '디스토피아 소설', 14000)")
@@ -25,14 +27,15 @@ class BookDBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, 
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
-        onCreate(db)
+        if (oldVersion < 2) {
+            db.execSQL("ALTER TABLE $TABLE_NAME ADD COLUMN imageUri TEXT")
+            db.execSQL("ALTER TABLE $TABLE_NAME ADD COLUMN publishedDate TEXT")
+        }
     }
 
     companion object {
         const val DB_NAME = "book_db"
-        const val DB_VERSION = 1
+        const val DB_VERSION = 2
         const val TABLE_NAME = "book_table"
     }
 }
-
