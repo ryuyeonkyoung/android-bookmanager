@@ -32,6 +32,16 @@ class UpdateBookActivity : AppCompatActivity() {
         binding.etPrice.setText(book.price?.toString() ?: "")
         binding.btnAdd.text = "수정"
 
+        val imageRes = when (book.title) {
+            "어린왕자" -> R.mipmap.orinwangja
+            "데미안" -> R.mipmap.demian
+            "1984" -> R.mipmap.n1984
+            "죄와 벌" -> R.mipmap.joewa_beol
+            "삼국지" -> R.mipmap.samgukji
+            else -> R.mipmap.ic_launcher
+        }
+        binding.imageBookCover.setImageResource(imageRes)
+
         binding.btnAdd.setOnClickListener {
             val title = binding.etTitle.text.toString().trim()
             val author = binding.etAuthor.text.toString().trim()
@@ -63,4 +73,3 @@ class UpdateBookActivity : AppCompatActivity() {
         }
     }
 }
-
