@@ -25,6 +25,16 @@ class BookAdapter(
         fun bind(book: BookDto) {
             binding.textTitle.text = book.title
             binding.textAuthor.text = book.author
+            // 도서 제목에 따라 이미지 연결
+            val imageRes = when (book.title) {
+                "어린왕자" -> R.mipmap.orinwangja
+                "데미안" -> R.mipmap.demian
+                "1984" -> R.mipmap.n1984
+                "죄와 벌" -> R.mipmap.joewa_beol
+                "삼국지" -> R.mipmap.samgukji
+                else -> R.mipmap.ic_launcher
+            }
+            binding.imageView.setImageResource(imageRes)
             binding.root.setOnClickListener {
                 itemClickListener?.invoke(book)
             }
