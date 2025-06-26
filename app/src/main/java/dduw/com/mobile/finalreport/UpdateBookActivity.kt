@@ -17,7 +17,6 @@ class UpdateBookActivity : AppCompatActivity() {
         setContentView(binding.root)
         dao = BookDaoImpl(this)
 
-        // BookDto 전달받기
         val book = intent.getSerializableExtra("book") as? BookDto
         if (book == null) {
             Toast.makeText(this, "도서 정보가 없습니다.", Toast.LENGTH_SHORT).show()

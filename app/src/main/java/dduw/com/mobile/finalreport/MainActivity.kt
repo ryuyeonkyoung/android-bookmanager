@@ -1,8 +1,3 @@
-// 과제명: 도서 리뷰 앱
-// 분반: 01 분반
-// 학번: 20200966 성명: 류연경
-// 제출일: 2025년 06월 26일
-
 package dduw.com.mobile.finalreport
 
 import android.app.AlertDialog
@@ -18,7 +13,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import dduw.com.mobile.finalreport.databinding.ActivityMainBinding
-
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -41,14 +35,12 @@ class MainActivity : AppCompatActivity() {
         binding.rvBooks.layoutManager = LinearLayoutManager(this)
         binding.rvBooks.adapter = adapter
 
-        // 아이템 클릭 시 UpdateBookActivity로 BookDto 전달
         adapter.setOnItemClickListener { book ->
             val intent = Intent(this, UpdateBookActivity::class.java)
             intent.putExtra("book", book)
             startActivityForResult(intent, 101)
         }
 
-        // 롱클릭 시 삭제 다이얼로그
         adapter.setOnItemLongClickListener { book ->
             AlertDialog.Builder(this)
                 .setTitle("도서 삭제")

@@ -46,4 +46,3 @@ class AddBookActivity : AppCompatActivity() {
         }
     }
 }
-
