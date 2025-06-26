@@ -1,3 +1,8 @@
+// 과제명: 도서 리뷰 앱
+// 분반: 01 분반
+// 학번: 20200966 성명: 류연경
+// 제출일: 2025년 06월 26일
+
 package dduw.com.mobile.finalreport
 
 import android.app.AlertDialog
